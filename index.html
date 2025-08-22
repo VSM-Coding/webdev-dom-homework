@@ -68,6 +68,9 @@
     const commentText = document.querySelector(".add-form-text");
     const btnAddComment = document.querySelector(".add-form-button");
     const commentsList = document.querySelector(".comments");
+    const btnLike = document.querySelector(".like-button");
+    const likesCounter = document.querySelector(".likes-counter");
+    const likesActive = document.querySelector("-active-like");
 
     const newTime = () => {
       const now = new Date();
@@ -88,29 +91,20 @@
           return;
         }
 
-        const newComment = document.createElement('li');
+        const temlateComment = document.querySelector('.comment');
+        const clonedComment = temlateComment.cloneNode(true);
 
-        newComment.className = "comment";
-        
-        newComment.innerHTML = `
-        <div class="comment-header">
-            <div>${name}</div>
-            <div>${newTime()}</div>
-          </div>
-          <div class="comment-body">
-            <div class="comment-text">
-              ${text}
-            </div>
-          </div>
-          <div class="comment-footer">
-            <div class="likes">
-              <span class="likes-counter">0</span>
-              <button class="like-button"></button>
-            </div>
-          </div>
-        `;
+        clonedComment.querySelector('.comment-header div:first-child').textContent = name;
+        clonedComment.querySelector('.comment-header div:last-child').textContent = newTime();
+        clonedComment.querySelector('.comment-text').textContent = text;
+        clonedComment.querySelector('.likes-counter').textContent = "0";
 
-        commentsList.appendChild(newComment);
+        clonedComment.querySelector('.like-button').classList.remove('-active-like');
+
+        commentsList.appendChild(clonedComment);
+
+        const likeButton = clonedComment.querySelector('.like-button');
+        likeButton.addEventListener('click', toggleLike);
 
         inputName.value = "";
         commentText.value = "";
@@ -128,6 +122,29 @@
       }
     })
 
+    const toggleLike = (event) => {
+      const likeButton = event.target;
+      const likesCounter = likeButton.closest('.comment').querySelector('.likes-counter');
+    
+    const isActive = likeButton.classList.contains('-active-like');
+    let count = parseInt(likesCounter.textContent);
+    
+    if (isActive) {
+        
+        likeButton.classList.remove('-active-like');
+        count--;
+    } else {
+        
+        likeButton.classList.add('-active-like');
+        count++;
+    }
+    
+    likesCounter.textContent = count;
+    }
+
+    document.querySelectorAll('.like-button').forEach(button => {
+    button.addEventListener('click', toggleLike);
+});
 
   </script>
 </html>
