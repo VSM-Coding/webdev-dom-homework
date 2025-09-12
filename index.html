@@ -101,6 +101,7 @@
 
 
     const toggleLike = (event) => {
+        event.stopPropagation();
         const button = event.target;
         const index = Number(button.dataset.index);
 
@@ -110,13 +111,27 @@
         renderComments(); 
     };
 
+    const quoteComments = () => {
+      const comment = document.querySelectorAll(".comment");
+
+      for (const commentElement of comment) {
+        commentElement.addEventListener("click", () => {
+          const index = Number(commentElement.dataset.index);
+          const comment = comments[index];
+          commentText.value = `>${comment.name}:\n>${comment.text}\n\n`;
+          commentText.focus();
+
+        })
+      }
+    };
+
 
     const renderComments = () => {
         commentsList.innerHTML = ""; 
 
         comments.forEach((comment, index) => {
             const commentHTML = `
-                <li class="comment">
+                <li class="comment" data-index="${index}">
                     <div class="comment-header">
                         <div>${comment.name}</div>
                         <div>${comment.createdAt}</div>
@@ -139,12 +154,13 @@
         document.querySelectorAll('.like-button').forEach(button => {
             button.addEventListener('click', toggleLike);
         });
+        quoteComments();
     };
 
 
     const newComment = () => {
-        const name = inputName.value.trim();
-        const text = commentText.value.trim();
+        const name = inputName.value.trim().replaceAll("<", "").replaceAll(">", "");
+        const text = commentText.value.trim().replaceAll("<", "").replaceAll(">", "");
 
         if (!name || !text) {
             alert('Заполните все поля!');
@@ -168,6 +184,7 @@
 
 
     btnAddComment.addEventListener('click', newComment);
+    
 
     inputName.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') newComment();
