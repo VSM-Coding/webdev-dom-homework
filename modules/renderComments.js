@@ -1,13 +1,12 @@
-import {comments} from "./commentsData.js";
-import {toggleLike, quoteComments} from "./commentsFunction.js";
-
+import { comments } from './commentsData.js'
+import { toggleLike, quoteComments } from './commentsFunction.js'
 
 export const renderComments = () => {
-        const commentsList = document.querySelector(".comments");
-        commentsList.innerHTML = ""; 
+    const commentsList = document.querySelector('.comments')
+    commentsList.innerHTML = ''
 
-        comments.forEach((comment, index) => {
-            const commentHTML = `
+    comments.forEach((comment, index) => {
+        const commentHTML = `
                 <li class="comment" data-index="${index}">
                     <div class="comment-header">
                         <div>${comment.name}</div>
@@ -23,13 +22,12 @@ export const renderComments = () => {
                         </div>
                     </div>
                 </li>
-            `;
-            commentsList.innerHTML += commentHTML;
-        });
+            `
+        commentsList.innerHTML += commentHTML
+    })
 
-    
-        document.querySelectorAll('.like-button').forEach(button => {
-            button.addEventListener('click', toggleLike);
-        });
-        quoteComments();
-    };
+    document.querySelectorAll('.like-button').forEach((button) => {
+        button.addEventListener('click', toggleLike)
+    })
+    quoteComments()
+}
