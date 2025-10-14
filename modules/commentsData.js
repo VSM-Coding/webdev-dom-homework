@@ -14,3 +14,7 @@ export let comments = [
         createdAt: '13.02.22 19:22',
     },
 ]
+
+export const updateComments = (newComments) => {
+    comments = newComments
+}
