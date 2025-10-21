@@ -1,5 +1,7 @@
+// import { formatDate } from 'date-fns'
 import { comments } from './commentsData.js'
 import { toggleLike, quoteComments } from './commentsFunction.js'
+import { formatDate } from './newTime.js'
 
 export const renderComments = () => {
     const commentsList = document.querySelector('.comments')
@@ -9,8 +11,8 @@ export const renderComments = () => {
         const commentHTML = `
                 <li class="comment" data-index="${index}">
                     <div class="comment-header">
-                        <div>${comment.name}</div>
-                        <div>${comment.createdAt}</div>
+                        <div>${comment.author.name}</div>
+                        <div>${formatDate(comment.date)}</div>
                     </div>
                     <div class="comment-body">
                         <div class="comment-text">${comment.text}</div>
