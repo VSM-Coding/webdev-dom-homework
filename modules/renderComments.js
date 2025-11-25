@@ -1,11 +1,11 @@
 // import { formatDate } from 'date-fns'
-import { comments } from './commentsData.js'
-import { toggleLike, quoteComments } from './commentsFunction.js'
-import { formatDate } from './newTime.js'
+import { comments } from './commentsData.js';
+import { toggleLike, quoteComments } from './commentsFunction.js';
+import { formatDate } from './newTime.js';
 
 export const renderComments = () => {
-    const commentsList = document.querySelector('.comments')
-    commentsList.innerHTML = ''
+    const commentsList = document.querySelector('.comments');
+    commentsList.innerHTML = '';
 
     comments.forEach((comment, index) => {
         const commentHTML = `
@@ -24,12 +24,12 @@ export const renderComments = () => {
                         </div>
                     </div>
                 </li>
-            `
-        commentsList.innerHTML += commentHTML
-    })
+            `;
+        commentsList.innerHTML += commentHTML;
+    });
 
     document.querySelectorAll('.like-button').forEach((button) => {
-        button.addEventListener('click', toggleLike)
-    })
-    quoteComments()
-}
+        button.addEventListener('click', toggleLike);
+    });
+    quoteComments();
+};

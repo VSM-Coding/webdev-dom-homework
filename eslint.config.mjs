@@ -1,7 +1,7 @@
-import pluginJs from '@eslint/js'
-import globals from 'globals'
-import config from 'eslint-config-prettier'
-import plugin from 'eslint-plugin-prettier/recommended'
+import pluginJs from '@eslint/js';
+import globals from 'globals';
+import config from 'eslint-config-prettier';
+import plugin from 'eslint-plugin-prettier/recommended';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -9,4 +9,4 @@ export default [
     pluginJs.configs.recommended,
     config,
     plugin,
-]
+];

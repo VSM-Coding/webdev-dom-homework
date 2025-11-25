@@ -40,6 +40,11 @@ body {
     gap: 24px;
   }
 
+  .comments-loading {
+    display: none;
+    margin-top: 20px;
+  }
+
   .comment {
     padding: 48px;
   }
@@ -134,4 +139,9 @@ body {
 
   .add-form-button:hover {
     opacity: 0.9;
+  }
+
+  .form-loading {
+    display: none;
+    margin-top: 20px;
   }
