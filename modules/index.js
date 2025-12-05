@@ -18,9 +18,7 @@ fetch('https://wedev-api.sky.pro/api/v1/mamay-vitaliy/comments', {
     .then((data) => {
         document.querySelector('.comments-loading').style.display = 'none';
         document.querySelector('.add-form').style.display = 'flex';
-       
+
         updateComments(data.comments);
         renderComments();
     });
-
-// fetch('https://wedev-api.sky.pro/api/v1/mamay-vitaliy/comments')

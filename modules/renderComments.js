@@ -18,7 +18,7 @@ export const renderComments = () => {
                         <div class="comment-text">${comment.text}</div>
                     </div>
                     <div class="comment-footer">
-                        <div class="likes">
+                        <div class="likes ${comment.isLikeLoading ? 'loading-like' : ''}">
                             <span class="likes-counter">${comment.likes}</span>
                             <button class="like-button ${comment.isLiked ? '-active-like' : ''}" data-index="${index}"></button>
                         </div>
