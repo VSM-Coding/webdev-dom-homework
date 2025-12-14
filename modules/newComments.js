@@ -46,17 +46,21 @@ export const newComment = () => {
                 console.error('Нет поля comments в ответе:', data);
                 return;
             }
-            document.querySelector('.form-loading').style.display = 'none';
-            document.querySelector('.add-form').style.display = 'flex';
+
+            inputName.value = '';
+            commentText.value = '';
             updateComments(data.comments);
             renderComments();
         })
         .catch((error) => {
             console.error('Ошибка запроса:', error);
+
+            alert(
+                'Что-то пошло не так. Проверьте подключение к интернету и попробуйте снова.',
+            );
+        })
+        .finally(() => {
+            document.querySelector('.form-loading').style.display = 'none';
+            document.querySelector('.add-form').style.display = 'flex';
         });
-
-    inputName.value = '';
-    commentText.value = '';
-
-    renderComments();
 };
