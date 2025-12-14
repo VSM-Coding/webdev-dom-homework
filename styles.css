@@ -141,6 +141,31 @@ body {
     resize: none;
 }
 
+.add-form-name,
+.add-form-text:focus {
+  border-bottom-color: #4a90e2;
+  box-shadow: 0 1px 0 0 #4a90e2;
+}
+
+
+.add-form--error {
+  border-bottom-color: #e74c3c !important;
+  box-shadow: 0 1px 0 0 #e74c3c !important;
+}
+
+.add-form--error-shake {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translateX(0);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+
 .add-form-row {
     display: flex;
     justify-content: flex-end;
